@@ -1,0 +1,1176 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+
+Begin optimization report for: main(int, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main(int, char **)) [1] main.cpp(53,33)
+  -> INLINE: (65,6) atoi(const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (69,12) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (69,12) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (69,12) std::allocator<vec>::~allocator(std::allocator<vec> *)
+  -> (69,17) std::vector<vec, std::allocator<vec>>::~vector(std::vector<vec, std::allocator<vec>> *)
+  -> (69,17) std::vector<vec, std::allocator<vec>>::vector(std::vector<vec, std::allocator<vec>> *, std::vector<vec, std::allocator<vec>>::size_type, const std::vector<vec, std::allocator<vec>>::value_type &, const std::vector<vec, std::allocator<vec>>::allocator_type &)
+  -> DELETED: (69,17) std::allocator<vec>::~allocator(std::allocator<vec> *)
+  -> INLINE: (69,17) std::allocator<vec>::allocator(std::allocator<vec> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (69,33) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (69,33) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (69,33) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (69,33) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (70,9) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> (70,13) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (70,13) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> (70,13) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::value_type &, const std::vector<double, std::allocator<double>>::allocator_type &)
+  -> INLINE: (70,13) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (70,17) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *)
+  -> (70,17) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (72,9) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (72,25) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (72,25) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (72,25) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::value_type &, const std::vector<double, std::allocator<double>>::allocator_type &)
+  -> (72,25) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (72,29) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (72,33) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (72,33) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (72,33) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::value_type &, const std::vector<double, std::allocator<double>>::allocator_type &)
+  -> (72,33) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (72,37) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (72,41) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (72,41) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (72,41) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::value_type &, const std::vector<double, std::allocator<double>>::allocator_type &)
+  -> (72,41) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> INLINE: (81,25) std::basic_ifstream<char, std::char_traits<char>>::~basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (81,25) std::basic_ifstream<char, std::char_traits<char>>::basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const, const char *, std::ios_base::openmode)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (82,21) std::basic_ifstream<char, std::char_traits<char>>::is_open(std::basic_ifstream<char, std::char_traits<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (83,13) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (83,38) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE: (84,9) std::vector<vec, std::allocator<vec>>::~vector(std::vector<vec, std::allocator<vec>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (84,9) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (84,9) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (84,9) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (84,9) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (84,9) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (84,9) std::basic_ifstream<char, std::char_traits<char>>::~basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (89,13) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *)
+  -> (89,13) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> (91,24) std::basic_istream<char, std::char_traits<char>>::operator>>(std::basic_istream<char, std::char_traits<char>> *, double &)
+  -> INLINE: (91,28) std::vector<vec, std::allocator<vec>>::operator[](std::vector<vec, std::allocator<vec>> *, std::vector<vec, std::allocator<vec>>::size_type)
+  -> INLINE: (91,31) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (93,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (96,20) std::basic_istream<char, std::char_traits<char>>::operator>>(std::basic_istream<char, std::char_traits<char>> *, double &)
+  -> INLINE: (96,23) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (97,22) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (99,16) std::basic_ifstream<char, std::char_traits<char>>::close(std::basic_ifstream<char, std::char_traits<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (103,12) std::allocator<vec>::~allocator(std::allocator<vec> *)
+  -> INLINE: (103,12) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (103,12) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (103,48) std::allocator<vec>::~allocator(std::allocator<vec> *)
+  -> INLINE: (103,48) std::allocator<vec>::allocator(std::allocator<vec> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (103,48) std::vector<vec, std::allocator<vec>>::vector(std::vector<vec, std::allocator<vec>> *, std::vector<vec, std::allocator<vec>>::size_type, const std::vector<vec, std::allocator<vec>>::value_type &, const std::vector<vec, std::allocator<vec>>::allocator_type &)
+  -> (103,48) std::vector<vec, std::allocator<vec>>::~vector(std::vector<vec, std::allocator<vec>> *)
+  -> (103,64) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (103,64) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (103,64) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (103,64) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (106,18) std::vector<vec, std::allocator<vec>>::operator[](std::vector<vec, std::allocator<vec>> *, std::vector<vec, std::allocator<vec>>::size_type)
+  -> INLINE: (106,21) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (106,28) std::vector<vec, std::allocator<vec>>::operator[](std::vector<vec, std::allocator<vec>> *, std::vector<vec, std::allocator<vec>>::size_type)
+  -> INLINE: (106,91) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (114,11) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (114,11) std::vector<double, std::allocator<double>>::operator=(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>> &&)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (120,92) std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1L, 1L>>, int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (120,92) std::chrono::operator-<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration, std::chrono::_V2::system_clock::duration>(const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> &, const std::chrono::time_point<std::chrono::_V2::system_clock, std::chrono::_V2::system_clock::duration> &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (133,13) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (133,25) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (133,25) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> INLINE: (133,25) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (133,25) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (133,25) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (139,13) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (139,21) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (139,21) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> INLINE: (139,21) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (139,21) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (139,21) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> INLINE: (140,34) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> INLINE: (140,34) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> INLINE: (141,18) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (141,24) std::abs(double)
+  -> INLINE: (141,37) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (141,44) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (142,32) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (144,13) __gnu_cxx::__normal_iterator<std::vector<double, std::allocator<double>>::pointer, std::vector<double, std::allocator<double>>>::operator*(const __gnu_cxx::__normal_iterator<std::vector<double, std::allocator<double>>::pointer, std::vector<double, std::allocator<double>>> *) const
+  -> INLINE: (144,26) std::vector<double, std::allocator<double>>::begin(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (144,41) std::vector<double, std::allocator<double>>::end(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (144,41) std::max_element<std::vector<double, std::allocator<double>>::iterator>(std::vector<double, std::allocator<double>>::iterator, std::vector<double, std::allocator<double>>::iterator)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (145,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (145,57) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double)
+  -> (145,76) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (146,18) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (146,47) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double)
+  -> (146,63) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE: (149,38) std::chrono::duration<double, std::ratio<1L, 1L>>::count(const std::chrono::duration<double, std::ratio<1L, 1L>> *) const
+  -> (153,14) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (153,38) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double)
+  -> (153,56) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (154,14) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (154,45) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double)
+  -> (154,57) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> (155,14) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (155,41) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double)
+  -> (155,62) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE: (156,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (156,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (159,5) std::vector<vec, std::allocator<vec>>::~vector(std::vector<vec, std::allocator<vec>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (159,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (159,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (159,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (159,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (159,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (159,5) std::basic_ifstream<char, std::char_traits<char>>::~basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (159,5) std::vector<vec, std::allocator<vec>>::~vector(std::vector<vec, std::allocator<vec>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(69,33)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(69,33)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(69,33)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_construct.h(102,4) inlined into main.cpp(84,9)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+LOOP END
+
+LOOP BEGIN at main.cpp(90,9)
+   remark #15333: loop was not vectorized: exception handling for a call prevents vectorization   [ main.cpp(91,24) ]
+LOOP END
+
+LOOP BEGIN at main.cpp(95,5)
+   remark #15333: loop was not vectorized: exception handling for a call prevents vectorization   [ main.cpp(96,20) ]
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(103,64)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(103,64)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(103,64)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at main.cpp(104,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed ANTI dependence between ((A.A.A.A+((prank*N)/psize+i)*24)->_M_start)[j] (105:9) and ((sub_A.sub_A.sub_A.sub_A+i*24)->_M_start)[j] (106:21)
+
+   LOOP BEGIN at main.cpp(105,9)
+      remark #25401: memcopy(with guard) generated
+      remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+
+      LOOP BEGIN at main.cpp(105,9)
+      <Multiversioned v2>
+         remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+         remark #25439: unrolled with remainder by 2  
+      LOOP END
+
+      LOOP BEGIN at main.cpp(105,9)
+      <Remainder, Multiversioned v2>
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at main.cpp(113,5)
+   remark #15333: loop was not vectorized: exception handling for a call prevents vectorization   [ main.cpp(114,13) ]
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(133,25)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(133,25)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(133,25)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(139,21)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(139,21)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into main.cpp(139,21)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at main.cpp(140,34)
+<Peeled loop for vectorization>
+LOOP END
+
+LOOP BEGIN at main.cpp(140,34)
+   remark #15300: LOOP WAS VECTORIZED
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 4
+LOOP END
+
+LOOP BEGIN at main.cpp(140,34)
+<Alternate Alignment Vectorized Loop>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 4
+LOOP END
+
+LOOP BEGIN at main.cpp(140,34)
+<Remainder loop for vectorization>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algo.h(5523,7) inlined into main.cpp(144,41)
+   remark #15523: loop was not vectorized: loop control variable __first.__first was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_construct.h(102,4) inlined into main.cpp(159,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_construct.h(102,4) inlined into main.cpp(159,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at main.cpp(88,5)
+   remark #15333: loop was not vectorized: exception handling for a call prevents vectorization   [ main.cpp(91,24) ]
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+main.cpp(105,9):remark #34026: call to memcpy implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+main.cpp(53,33):remark #34051: REGISTER ALLOCATION : [main] main.cpp:53
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   26[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm11]
+        
+    Routine temporaries
+        Total         :     724
+            Global    :     160
+            Local     :     564
+        Regenerable   :     238
+        Spilled       :      17
+        
+    Routine stack
+        Variables     :     930 bytes*
+            Reads     :      75 [7.11e+01 ~ 5.5%]
+            Writes    :     125 [4.84e+01 ~ 3.7%]
+        Spills        :      96 bytes*
+            Reads     :      24 [4.82e+01 ~ 3.7%]
+            Writes    :      17 [1.18e+01 ~ 0.9%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<double, std::allocator<double>>::~_Vector_base(std::_Vector_base<double, std::allocator<double>> *)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(160,7):remark #34051: REGISTER ALLOCATION : [_ZNSt12_Vector_baseIdSaIdEED1Ev] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:160
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rdi r12]
+        
+    Routine temporaries
+        Total         :      12
+            Global    :       8
+            Local     :       4
+        Regenerable   :       2
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, const std::vector<double, std::allocator<double>>::allocator_type &)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(267,20):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIdSaIdEEC1ERKS0_] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:267
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    5[ rax rdx rsi rdi r12]
+        
+    Routine temporaries
+        Total         :      12
+            Global    :       7
+            Local     :       5
+        Regenerable   :       3
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::value_type &, const std::vector<double, std::allocator<double>>::allocator_type &)
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(295,9)
+<Peeled loop for vectorization>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(295,9)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(295,9)
+<Remainder loop for vectorization>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(294,7):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIdSaIdEEC1EmRKdRKS0_] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:294
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   11[ rax rdx rcx rbx rsi rdi r12 r14-r15 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      32
+            Global    :      18
+            Local     :      14
+        Regenerable   :       4
+        Spilled       :       4
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::char_traits<char>::length(const std::char_traits<char>::char_type *)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/char_traits.h(267,7):remark #34051: REGISTER ALLOCATION : [_ZNSt11char_traitsIcE6lengthEPKc] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/char_traits.h:267
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    4[ rax rdx rbx rdi]
+        
+    Routine temporaries
+        Total         :      14
+            Global    :       8
+            Local     :       6
+        Regenerable   :       2
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<vec, std::allocator<vec>>::~vector(std::vector<vec, std::allocator<vec>> *)
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_construct.h(102,4) inlined into /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(427,9)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed ANTI dependence between __first->_M_start (160:9) and call:operator delete(void *) (110:9)
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(426,7):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIS_IdSaIdEESaIS1_EED1Ev] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:426
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    6[ rax rdx rbx rdi r14-r15]
+        
+    Routine temporaries
+        Total         :      15
+            Global    :      10
+            Local     :       5
+        Regenerable   :       2
+        Spilled       :       3
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      16 bytes*
+            Reads     :       2 [1.97e+00 ~ 3.0%]
+            Writes    :       2 [1.97e+00 ~ 3.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<vec, std::allocator<vec>>::vector(std::vector<vec, std::allocator<vec>> *, std::vector<vec, std::allocator<vec>>::size_type, const std::vector<vec, std::allocator<vec>>::value_type &, const std::vector<vec, std::allocator<vec>>::allocator_type &)
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_uninitialized.h(201,8) inlined into /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(295,9)
+   remark #15333: loop was not vectorized: exception handling for a call prevents vectorization   [ /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_construct.h(75,42) ]
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(294,7):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIS_IdSaIdEESaIS1_EEC1EmRKS1_RKS2_] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:294
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   10[ rax rdx rcx rbx rsi rdi r12-r15]
+        
+    Routine temporaries
+        Total         :      41
+            Global    :      14
+            Local     :      27
+        Regenerable   :       4
+        Spilled       :       7
+        
+    Routine stack
+        Variables     :       8 bytes*
+            Reads     :       2 [0.00e+00 ~ 0.0%]
+            Writes    :       2 [0.00e+00 ~ 0.0%]
+        Spills        :      16 bytes*
+            Reads     :       3 [9.59e-01 ~ 1.1%]
+            Writes    :       2 [9.59e-01 ~ 1.1%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(426,7):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIdSaIdEED1Ev] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:426
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rdi r12]
+        
+    Routine temporaries
+        Total         :      12
+            Global    :       8
+            Local     :       4
+        Regenerable   :       2
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<vec, std::allocator<vec>>::~_Vector_base(std::_Vector_base<vec, std::allocator<vec>> *)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(160,7):remark #34051: REGISTER ALLOCATION : [_ZNSt12_Vector_baseISt6vectorIdSaIdEESaIS2_EED1Ev] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:160
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rdi r12]
+        
+    Routine temporaries
+        Total         :      12
+            Global    :       8
+            Local     :       4
+        Regenerable   :       2
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(259,17):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIdSaIdEEC1Ev] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:259
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    4[ rax rdx rdi r13]
+        
+    Routine temporaries
+        Total         :      11
+            Global    :       7
+            Local     :       4
+        Regenerable   :       3
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: print(const vec &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (print(const vec &)) [28] main.cpp(32,26)
+  -> INLINE: (33,17) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> (35,12) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::ios_base &(*)(std::ios_base &))
+  -> (35,21) std::operator<<<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, std::_Setprecision)
+  -> INLINE: (35,37) std::setprecision(int)
+  -> (35,41) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double)
+  -> INLINE: (35,45) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> (35,49) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, char)
+  -> (37,8) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, char)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at main.cpp(34,4)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+main.cpp(32,26):remark #34051: REGISTER ALLOCATION : [_Z5printRKSt6vectorIdSaIdEE] main.cpp:32
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    9[ rax rdx rcx rsi rdi r12-r14 zmm0]
+        
+    Routine temporaries
+        Total         :      34
+            Global    :      17
+            Local     :      17
+        Regenerable   :      10
+        Spilled       :       3
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      16 bytes*
+            Reads     :       2 [1.80e+00 ~ 1.6%]
+            Writes    :       2 [1.80e+00 ~ 1.6%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::ios_base::precision(std::ios_base *, std::streamsize)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/ios_base.h(699,5):remark #34051: REGISTER ALLOCATION : [_ZNSt8ios_base9precisionEl] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/ios_base.h:699
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    6[ rax rdx rsi rdi r12-r13]
+        
+    Routine temporaries
+        Total         :      14
+            Global    :       8
+            Local     :       6
+        Regenerable   :       2
+        Spilled       :       2
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: print(const matrix &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (print(const matrix &)) [34] main.cpp(41,29)
+  -> INLINE: (42,17) std::vector<vec, std::allocator<vec>>::size(const std::vector<vec, std::allocator<vec>> *) const
+  -> INLINE: (43,16) std::vector<vec, std::allocator<vec>>::operator[](const std::vector<vec, std::allocator<vec>> *, std::vector<vec, std::allocator<vec>>::size_type) const
+  -> INLINE: (43,20) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> (46,15) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::ios_base &(*)(std::ios_base &))
+  -> (46,24) std::operator<<<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, std::_Setw)
+  -> INLINE: (46,32) std::setw(int)
+  -> (46,36) std::operator<<<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, std::_Setprecision)
+  -> INLINE: (46,52) std::setprecision(int)
+  -> (46,55) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, double)
+  -> INLINE: (46,59) std::vector<vec, std::allocator<vec>>::operator[](const std::vector<vec, std::allocator<vec>> *, std::vector<vec, std::allocator<vec>>::size_type) const
+  -> INLINE: (46,62) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> (48,12) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, char)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at main.cpp(44,4)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed OUTPUT dependence between call:std::basic_ostream<char, std::char_traits<char>>::operator< (46:15) and call:std::operator<<<std::char_traits<char>>(std::basic_ostream< (48:12)
+
+   LOOP BEGIN at main.cpp(45,7)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+main.cpp(41,29):remark #34051: REGISTER ALLOCATION : [_Z5printRKSt6vectorIS_IdSaIdEESaIS1_EE] main.cpp:41
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   12[ rax rdx rcx rbx rsi rdi r8 r12-r15 zmm0]
+        
+    Routine temporaries
+        Total         :      49
+            Global    :      21
+            Local     :      28
+        Regenerable   :      13
+        Spilled       :       6
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      40 bytes*
+            Reads     :       5 [8.10e+00 ~ 1.5%]
+            Writes    :       5 [8.10e+00 ~ 1.5%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::ios_base::width(std::ios_base *, std::streamsize)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/ios_base.h(722,5):remark #34051: REGISTER ALLOCATION : [_ZNSt8ios_base5widthEl] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/ios_base.h:722
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    6[ rax rdx rsi rdi r12-r13]
+        
+    Routine temporaries
+        Total         :      14
+            Global    :       8
+            Local     :       6
+        Regenerable   :       2
+        Spilled       :       2
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, const std::vector<double, std::allocator<double>> &)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(368,6):remark #34026: call to memmove implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(323,7):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIdSaIdEEC1ERKS1_] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:323
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    8[ rax rdx rsi rdi r12-r15]
+        
+    Routine temporaries
+        Total         :      31
+            Global    :      15
+            Local     :      16
+        Regenerable   :       4
+        Spilled       :       4
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::_Destroy_aux<false>::__destroy<std::_Vector_base<vec, std::allocator<vec>>::pointer>(std::_Vector_base<vec, std::allocator<vec>>::pointer, std::_Vector_base<vec, std::allocator<vec>>::pointer)
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_construct.h(102,4)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed ANTI dependence between __first->_M_start (160:9) and call:operator delete(void *) (110:9)
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_construct.h(101,2):remark #34051: REGISTER ALLOCATION : [_ZNSt12_Destroy_auxILb0EE9__destroyIPSt6vectorIdSaIdEEEEvT_S6_] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_construct.h:101
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    5[ rdx rsi rdi r12-r13]
+        
+    Routine temporaries
+        Total         :      14
+            Global    :       9
+            Local     :       5
+        Regenerable   :       2
+        Spilled       :       2
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1L, 1L>>, int64_t, std::nano>(const std::chrono::duration<int64_t, std::nano> &)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/chrono(195,7):remark #34051: REGISTER ALLOCATION : [_ZNSt6chrono13duration_castINS_8durationIdSt5ratioILl1ELl1EEEElS2_ILl1ELl1000000000EEEENSt9enable_ifIXsr3std6chrono13__is_durationIT_EE5valueES7_E4typeERKNS1_IT0_T1_EE] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/chrono:195
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    4[ rdx rdi r13 zmm0]
+        
+    Routine temporaries
+        Total         :      13
+            Global    :       7
+            Local     :       6
+        Regenerable   :       2
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::fixed(std::ios_base &)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/ios_base.h(1042,3):remark #34051: REGISTER ALLOCATION : [_ZSt5fixedRSt8ios_base] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/ios_base.h:1042
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    4[ rax rdx rdi r13]
+        
+    Routine temporaries
+        Total         :      14
+            Global    :       7
+            Local     :       7
+        Regenerable   :       2
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::__fill_n_a<std::_Vector_base<double, std::allocator<double>>::pointer, std::vector<double, std::allocator<double>>::size_type, std::iterator_traits<std::vector<double, std::allocator<double>>::pointer>::value_type>(std::_Vector_base<double, std::allocator<double>>::pointer, std::vector<double, std::allocator<double>>::size_type, const std::iterator_traits<std::vector<double, std::allocator<double>>::pointer>::value_type &)
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7)
+<Peeled loop for vectorization>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7)
+<Remainder loop for vectorization>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(750,5):remark #34051: REGISTER ALLOCATION : [_ZSt10__fill_n_aIPdmdEN9__gnu_cxx11__enable_ifIXsr3std11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h:750
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   10[ rax rdx rcx rsi rdi r12-r14 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      25
+            Global    :      15
+            Local     :      10
+        Regenerable   :       2
+        Spilled       :       3
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::swap<std::_Vector_base<double, std::allocator<double>>::pointer>(std::_Vector_base<double, std::allocator<double>>::pointer &, std::_Vector_base<double, std::allocator<double>>::pointer &)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/move.h(186,5):remark #34051: REGISTER ALLOCATION : [_ZSt4swapIPdENSt9enable_ifIXsr3std6__and_IJSt21is_move_constructibleIT_ESt18is_move_assignableIS3_EEEE5valueEvE4typeERS3_S9_] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/move.h:186
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    6[ rax rdx rbx rsi rdi r12]
+        
+    Routine temporaries
+        Total         :      14
+            Global    :       8
+            Local     :       6
+        Regenerable   :       2
+        Spilled       :       2
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __sti__$E()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__sti__$E()) [175] <compiler generated>
+
+
+    Report from: Code generation optimizations [cg]
+
+<compiler generated>:remark #34051: REGISTER ALLOCATION : [__sti__$E] (null):0
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rsi rdi]
+        
+    Routine temporaries
+        Total         :      15
+            Global    :       7
+            Local     :       8
+        Regenerable   :       9
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================

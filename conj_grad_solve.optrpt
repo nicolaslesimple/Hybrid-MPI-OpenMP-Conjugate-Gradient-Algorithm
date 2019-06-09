@@ -1,0 +1,1470 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+
+Begin optimization report for: matrix_multiply_vector_openmp(const std::vector<vec, std::allocator<vec>> &, const vec &, vec &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (matrix_multiply_vector_openmp(const std::vector<vec, std::allocator<vec>> &, const vec &, vec &)) [3] conj_grad_solve.cpp(17,89)
+  -> INLINE: (32,29) std::vector<vec, std::allocator<vec>>::size(const std::vector<vec, std::allocator<vec>> *) const
+  -> INLINE: (36,15) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (36,21) dot_product(const vec &, const vec &)
+    -> INLINE: (83,12) std::__parallel::inner_product<std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double>(std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (83,42) std::vector<double, std::allocator<double>>::begin(const std::vector<double, std::allocator<double>> *) const
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (83,53) std::vector<double, std::allocator<double>>::end(const std::vector<double, std::allocator<double>> *) const
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (83,62) std::vector<double, std::allocator<double>>::begin(const std::vector<double, std::allocator<double>> *) const
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (36,38) std::vector<vec, std::allocator<vec>>::operator[](const std::vector<vec, std::allocator<vec>> *, std::vector<vec, std::allocator<vec>>::size_type) const
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at conj_grad_solve.cpp(34,5)
+remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at conj_grad_solve.cpp(35,5)
+   remark #15518: Structure assignment was serialized   [ /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31) ]
+   remark #15301: OpenMP SIMD LOOP WAS VECTORIZED
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(36,21)
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(35,5)
+<Remainder loop for vectorization>
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(36,21)
+      remark #25478: While Loop Unrolled by 2  
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 0), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 0), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 1), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 1), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 0), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 0), and destination (alignment, offset): (1, 0)
+conj_grad_solve.cpp(17,89):remark #34051: REGISTER ALLOCATION : [_Z29matrix_multiply_vector_openmpRKSt6vectorIS_IdSaIdEESaIS1_EERKS1_RS1_] conj_grad_solve.cpp:17
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   30[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm15]
+        
+    Routine temporaries
+        Total         :     381
+            Global    :     112
+            Local     :     269
+        Regenerable   :      81
+        Spilled       :      24
+        
+    Routine stack
+        Variables     :     190 bytes*
+            Reads     :      34 [1.18e+02 ~ 5.2%]
+            Writes    :      26 [7.43e+01 ~ 3.3%]
+        Spills        :     328 bytes*
+            Reads     :      55 [1.85e+02 ~ 8.2%]
+            Writes    :      43 [1.08e+02 ~ 4.8%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: vec_lin_combo(double, const vec &, double, const vec &, vec &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (vec_lin_combo(double, const vec &, double, const vec &, vec &)) [4] conj_grad_solve.cpp(39,81)
+  -> INLINE: (49,18) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> INLINE: (51,15) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (51,26) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> INLINE: (51,37) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at conj_grad_solve.cpp(50,5)
+<Peeled loop for vectorization, Multiversioned v1>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(50,5)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(50,5)
+<Alternate Alignment Vectorized Loop, Multiversioned v1>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(50,5)
+<Remainder loop for vectorization, Multiversioned v1>
+   remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(50,5)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25439: unrolled with remainder by 2  
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(50,5)
+<Remainder, Multiversioned v2>
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+conj_grad_solve.cpp(39,81):remark #34051: REGISTER ALLOCATION : [_Z13vec_lin_combodRKSt6vectorIdSaIdEEdS3_RS1_] conj_grad_solve.cpp:39
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   23[ rax rdx rcx rsi rdi r8-r10 r12 r14-r15 zmm0-zmm11]
+        
+    Routine temporaries
+        Total         :     120
+            Global    :      33
+            Local     :      87
+        Regenerable   :       3
+        Spilled       :       5
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :      16 bytes*
+            Reads     :       2 [2.00e+00 ~ 0.8%]
+            Writes    :       2 [2.00e+00 ~ 0.8%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: vec_lin_combo_openmp(double, const vec &, double, const vec &, vec &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (vec_lin_combo_openmp(double, const vec &, double, const vec &, vec &)) [5] conj_grad_solve.cpp(54,88)
+  -> INLINE: (64,18) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> INLINE: (67,15) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (67,26) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> INLINE: (67,37) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at conj_grad_solve.cpp(65,5)
+remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at conj_grad_solve.cpp(65,5)
+<Peeled loop for vectorization, Multiversioned v1>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(65,5)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(65,5)
+<Alternate Alignment Vectorized Loop, Multiversioned v1>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(65,5)
+<Remainder loop for vectorization, Multiversioned v1>
+   remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(65,5)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25439: unrolled with remainder by 2  
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(65,5)
+<Remainder, Multiversioned v2>
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+conj_grad_solve.cpp(54,88):remark #34051: REGISTER ALLOCATION : [_Z20vec_lin_combo_openmpdRKSt6vectorIdSaIdEEdS3_RS1_] conj_grad_solve.cpp:54
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   24[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm9]
+        
+    Routine temporaries
+        Total         :     230
+            Global    :      54
+            Local     :     176
+        Regenerable   :      54
+        Spilled       :       5
+        
+    Routine stack
+        Variables     :      80 bytes*
+            Reads     :       5 [1.00e+00 ~ 0.2%]
+            Writes    :      11 [2.70e+01 ~ 6.5%]
+        Spills        :      80 bytes*
+            Reads     :      25 [1.24e+01 ~ 3.0%]
+            Writes    :      15 [1.50e+01 ~ 3.6%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: dot_product_normal(const vec &, const vec &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (dot_product_normal(const vec &, const vec &)) [6] conj_grad_solve.cpp(70,54)
+  -> INLINE: (73,18) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> INLINE: (76,19) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> INLINE: (76,26) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at conj_grad_solve.cpp(75,5)
+<Peeled loop for vectorization>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(75,5)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(75,5)
+<Alternate Alignment Vectorized Loop>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(75,5)
+<Remainder loop for vectorization>
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+conj_grad_solve.cpp(70,54):remark #34051: REGISTER ALLOCATION : [_Z18dot_product_normalRKSt6vectorIdSaIdEES3_] conj_grad_solve.cpp:70
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   15[ rax rdx rcx rbx rsi rdi r15 zmm0-zmm7]
+        
+    Routine temporaries
+        Total         :      54
+            Global    :      18
+            Local     :      36
+        Regenerable   :       3
+        Spilled       :       2
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: dot_product(const vec &, const vec &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (dot_product(const vec &, const vec &)) [7] conj_grad_solve.cpp(81,48)
+  -> INLINE: (83,12) std::__parallel::inner_product<std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double>(std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (83,42) std::vector<double, std::allocator<double>>::begin(const std::vector<double, std::allocator<double>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (83,53) std::vector<double, std::allocator<double>>::end(const std::vector<double, std::allocator<double>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (83,62) std::vector<double, std::allocator<double>>::begin(const std::vector<double, std::allocator<double>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(83,1) inlined into conj_grad_solve.cpp(83,12)
+remark #16204: OpenMP multithreaded code generation for SINGLE was successful
+OpenMP Construct at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(81,1) inlined into conj_grad_solve.cpp(83,12)
+remark #16201: OpenMP DEFINED REGION WAS PARALLELIZED
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(119,7) inlined into conj_grad_solve.cpp(83,12)
+   remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+   remark #25439: unrolled with remainder by 2  
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(119,7) inlined into conj_grad_solve.cpp(83,12)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(83,12)
+<Peeled loop for vectorization>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(83,12)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(83,12)
+<Alternate Alignment Vectorized Loop>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(83,12)
+<Remainder loop for vectorization>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(109,2) inlined into conj_grad_solve.cpp(83,12)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed ANTI dependence between at (110:5) and *__reduct (110:5)
+   remark #25439: unrolled with remainder by 2  
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(109,2) inlined into conj_grad_solve.cpp(83,12)
+<Remainder>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+conj_grad_solve.cpp(81,48):remark #34051: REGISTER ALLOCATION : [_Z11dot_productRKSt6vectorIdSaIdEES3_] conj_grad_solve.cpp:81
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   22[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm7]
+        
+    Routine temporaries
+        Total         :     284
+            Global    :      81
+            Local     :     203
+        Regenerable   :      63
+        Spilled       :       5
+        
+    Routine stack
+        Variables     :      80 bytes*
+            Reads     :      11 [9.37e-01 ~ 0.3%]
+            Writes    :       9 [1.22e+00 ~ 0.4%]
+        Spills        :      80 bytes*
+            Reads     :      24 [5.92e+00 ~ 2.0%]
+            Writes    :      22 [5.79e+00 ~ 2.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: vector_norm(const vec &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (vector_norm(const vec &)) [8] conj_grad_solve.cpp(119,34)
+  -> INLINE: (121,17) dot_product(const vec &, const vec &)
+    -> INLINE: (83,12) std::__parallel::inner_product<std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double>(std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (83,42) std::vector<double, std::allocator<double>>::begin(const std::vector<double, std::allocator<double>> *) const
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (83,53) std::vector<double, std::allocator<double>>::end(const std::vector<double, std::allocator<double>> *) const
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (83,62) std::vector<double, std::allocator<double>>::begin(const std::vector<double, std::allocator<double>> *) const
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(83,1) inlined into conj_grad_solve.cpp(121,17)
+remark #16204: OpenMP multithreaded code generation for SINGLE was successful
+OpenMP Construct at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(81,1) inlined into conj_grad_solve.cpp(121,17)
+remark #16201: OpenMP DEFINED REGION WAS PARALLELIZED
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(119,7) inlined into conj_grad_solve.cpp(121,17)
+   remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+   remark #25439: unrolled with remainder by 2  
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(119,7) inlined into conj_grad_solve.cpp(121,17)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(121,17)
+<Peeled loop for vectorization>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(121,17)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(121,17)
+<Remainder loop for vectorization>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(109,2) inlined into conj_grad_solve.cpp(121,17)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed ANTI dependence between at (110:5) and *__reduct (110:5)
+   remark #25439: unrolled with remainder by 2  
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(109,2) inlined into conj_grad_solve.cpp(121,17)
+<Remainder>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+conj_grad_solve.cpp(119,34):remark #34051: REGISTER ALLOCATION : [_Z11vector_normRKSt6vectorIdSaIdEE] conj_grad_solve.cpp:119
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   22[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm7]
+        
+    Routine temporaries
+        Total         :     273
+            Global    :      79
+            Local     :     194
+        Regenerable   :      63
+        Spilled       :       4
+        
+    Routine stack
+        Variables     :      80 bytes*
+            Reads     :      11 [9.37e-01 ~ 0.4%]
+            Writes    :       9 [1.22e+00 ~ 0.5%]
+        Spills        :      72 bytes*
+            Reads     :      23 [5.79e+00 ~ 2.5%]
+            Writes    :      21 [5.65e+00 ~ 2.5%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::__fill_n_a<std::_Vector_base<double, std::allocator<double>>::pointer, std::vector<double, std::allocator<double>>::size_type, std::iterator_traits<std::_Vector_base<double, std::allocator<double>>::pointer>::value_type>(std::_Vector_base<double, std::allocator<double>>::pointer, std::vector<double, std::allocator<double>>::size_type, const std::iterator_traits<std::_Vector_base<double, std::allocator<double>>::pointer>::value_type &)
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7)
+<Peeled loop for vectorization>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7)
+<Remainder loop for vectorization>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(750,5):remark #34051: REGISTER ALLOCATION : [_ZSt10__fill_n_aIPdmdEN9__gnu_cxx11__enable_ifIXsr3std11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h:750
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   10[ rax rdx rcx rsi rdi r12-r14 zmm0-zmm1]
+        
+    Routine temporaries
+        Total         :      25
+            Global    :      15
+            Local     :      10
+        Regenerable   :       2
+        Spilled       :       3
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __sti__$E()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__sti__$E()) [101] <compiler generated>
+
+
+    Report from: Code generation optimizations [cg]
+
+<compiler generated>:remark #34051: REGISTER ALLOCATION : [__sti__$E] (null):0
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rsi rdi]
+        
+    Routine temporaries
+        Total         :      15
+            Global    :       7
+            Local     :       8
+        Regenerable   :       9
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: dot_product_mpi(const vec &, const vec &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (dot_product_mpi(const vec &, const vec &)) [102] conj_grad_solve.cpp(87,60)
+  -> INLINE: (106,27) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> INLINE: (112,26) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> INLINE: (112,37) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at conj_grad_solve.cpp(110,5)
+remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at conj_grad_solve.cpp(110,5)
+<Peeled loop for vectorization>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(110,5)
+   remark #25084: Preprocess Loopnests: Moving Out Store    [ conj_grad_solve.cpp(112,9) ]
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(110,5)
+<Alternate Alignment Vectorized Loop>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(110,5)
+<Remainder loop for vectorization>
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+conj_grad_solve.cpp(87,60):remark #34051: REGISTER ALLOCATION : [_Z15dot_product_mpiRKSt6vectorIdSaIdEES3_] conj_grad_solve.cpp:87
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   22[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm7]
+        
+    Routine temporaries
+        Total         :     204
+            Global    :      42
+            Local     :     162
+        Regenerable   :      73
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :      80 bytes*
+            Reads     :       9 [2.90e+00 ~ 0.7%]
+            Writes    :      11 [2.69e+01 ~ 6.5%]
+        Spills        :      48 bytes*
+            Reads     :      17 [5.00e+00 ~ 1.2%]
+            Writes    :      16 [1.10e+01 ~ 2.6%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::char_traits<char>::length(const std::char_traits<char>::char_type *)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/char_traits.h(267,7):remark #34051: REGISTER ALLOCATION : [_ZNSt11char_traitsIcE6lengthEPKc] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/char_traits.h:267
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    4[ rax rdx rbx rdi]
+        
+    Routine temporaries
+        Total         :      14
+            Global    :       8
+            Local     :       6
+        Regenerable   :       2
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<double, std::allocator<double>>::_M_deallocate(std::_Vector_base<double, std::allocator<double>> *, std::_Vector_base<double, std::allocator<double>>::pointer, std::size_t)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(175,7):remark #34051: REGISTER ALLOCATION : [_ZNSt12_Vector_baseIdSaIdEE13_M_deallocateEPdm] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:175
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    4[ rdx rbx rsi rdi]
+        
+    Routine temporaries
+        Total         :      13
+            Global    :       7
+            Local     :       6
+        Regenerable   :       2
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(259,17):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIdSaIdEEC1Ev] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:259
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    4[ rax rdx rdi r13]
+        
+    Routine temporaries
+        Total         :      11
+            Global    :       7
+            Local     :       4
+        Regenerable   :       3
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, const std::vector<double, std::allocator<double>> &)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(368,6):remark #34026: call to memmove implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(323,7):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIdSaIdEEC1ERKS1_] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:323
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    8[ rax rdx rsi rdi r12-r15]
+        
+    Routine temporaries
+        Total         :      31
+            Global    :      15
+            Local     :      16
+        Regenerable   :       4
+        Spilled       :       4
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(426,7):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIdSaIdEED1Ev] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:426
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rdi r12]
+        
+    Routine temporaries
+        Total         :      12
+            Global    :       8
+            Local     :       4
+        Regenerable   :       2
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::vector<double, std::allocator<double>>::operator=(std::vector<double, std::allocator<double>> *, const std::vector<double, std::allocator<double>> &)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(368,6):remark #34026: call to memmove implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(368,6):remark #34026: call to memmove implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(368,6):remark #34026: call to memmove implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(368,6):remark #34026: call to memmove implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/vector.tcc(169,5):remark #34051: REGISTER ALLOCATION : [_ZNSt6vectorIdSaIdEEaSERKS1_] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/vector.tcc:169
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   10[ rax rdx rcx rbx rsi rdi r12-r15]
+        
+    Routine temporaries
+        Total         :      58
+            Global    :      22
+            Local     :      36
+        Regenerable   :       3
+        Spilled       :       6
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       8 bytes*
+            Reads     :       1 [2.19e-03 ~ 0.0%]
+            Writes    :       1 [2.19e-03 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __gnu_parallel::__for_each_template_random_access_ed<std::vector<double, std::allocator<double>>::const_iterator, __gnu_parallel::_Multiplies<std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::value_type, std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::value_type, double>, __gnu_parallel::__inner_product_selector<std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double>, __gnu_parallel::_Plus<double, std::binary_function<std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::value_type, std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::value_type, std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::value_type>::result_type, double>, double>(std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, __gnu_parallel::_Multiplies<std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::value_type, std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::value_type, double>, __gnu_parallel::__inner_product_selector<std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double> &, __gnu_parallel::_Plus<double, std::binary_function<std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::value_type, std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::value_type, std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::value_type>::result_type, double>, double, double &, std::__iterator_traits<std::vector<double, std::allocator<double>>::const_iterator, std::__void_t<>>::difference_type)
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(83,1)
+remark #16204: OpenMP multithreaded code generation for SINGLE was successful
+OpenMP Construct at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(81,1)
+remark #16201: OpenMP DEFINED REGION WAS PARALLELIZED
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(119,7)
+   remark #25084: Preprocess Loopnests: Moving Out Store    [ /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(122,6) ]
+   remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+   remark #25439: unrolled with remainder by 2  
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(119,7)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(109,2)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed ANTI dependence between at (110:5) and *__reduct (110:5)
+   remark #25439: unrolled with remainder by 2  
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(109,2)
+<Remainder>
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h(71,5):remark #34051: REGISTER ALLOCATION : [_ZN14__gnu_parallel36__for_each_template_random_access_edIN9__gnu_cxx17__normal_iteratorIPKdSt6vectorIdSaIdEEEENS_11_MultipliesIdddEENS_24__inner_product_selectorIS8_S8_dEENS_5_PlusIdddEEdEET0_T_SG_SF_RT1_T2_T3_RSK_NSt15iterator_traitsISG_E15difference_typeE] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/par_loop.h:71
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   17[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm2]
+        
+    Routine temporaries
+        Total         :     230
+            Global    :      65
+            Local     :     165
+        Regenerable   :      59
+        Spilled       :       6
+        
+    Routine stack
+        Variables     :      63 bytes*
+            Reads     :      14 [9.90e+00 ~ 4.2%]
+            Writes    :       7 [7.00e+00 ~ 3.0%]
+        Spills        :      88 bytes*
+            Reads     :      18 [7.56e+00 ~ 3.2%]
+            Writes    :      16 [6.12e+00 ~ 2.6%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: std::_Vector_base<double, std::allocator<double>>::~_Vector_base(std::_Vector_base<double, std::allocator<double>> *)
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h(160,7):remark #34051: REGISTER ALLOCATION : [_ZNSt12_Vector_baseIdSaIdEED1Ev] /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_vector.h:160
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :    3[ rdx rdi r12]
+        
+    Routine temporaries
+        Total         :      12
+            Global    :       8
+            Local     :       4
+        Regenerable   :       2
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+00 ~ 0.0%]
+            Writes    :       0 [0.00e+00 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: conj_grad_solver(vec *, const matrix &, const vec &, double, const vec &, int &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (conj_grad_solver(vec *, const matrix &, const vec &, double, const vec &, int &)) [131] conj_grad_solve.cpp(125,125)
+  -> INLINE: (156,18) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+  -> DELETED: (164,9) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> (164,15) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (164,15) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (164,15) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (164,15) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (165,9) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (165,15) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (165,15) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (165,15) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (165,15) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> INLINE: (170,14) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (170,21) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> INLINE: (171,14) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+  -> INLINE: (171,33) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> DELETED: (179,10) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (179,11) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (179,11) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (179,11) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (179,11) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> (180,13) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> (180,13) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, const std::vector<double, std::allocator<double>> &)
+  -> (181,17) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> (181,17) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, const std::vector<double, std::allocator<double>> &)
+  -> (182,9) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *)
+  -> (182,9) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (183,9) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (183,17) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (183,17) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (183,17) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (183,17) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (183,35) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (183,43) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (183,43) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (183,43) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (183,43) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (183,61) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (183,69) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (183,69) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (183,69) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (183,69) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (184,9) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (184,33) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (184,33) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (184,33) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (184,33) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> DELETED: (184,51) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> DELETED: (184,79) std::allocator<double>::~allocator(std::allocator<double> *)
+  -> INLINE: (184,79) std::allocator<double>::allocator(std::allocator<double> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (184,79) std::vector<double, std::allocator<double>>::vector(std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type, const std::vector<double, std::allocator<double>>::allocator_type &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (184,79) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+  -> INLINE: (187,17) dot_product_mpi(const vec &, const vec &)
+    -> INLINE: (106,27) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+    -> INLINE: (112,26) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+    -> INLINE: (112,37) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> (193,19) std::vector<double, std::allocator<double>>::operator=(std::vector<double, std::allocator<double>> *, const std::vector<double, std::allocator<double>> &)
+  -> INLINE: (195,9) matrix_multiply_vector_openmp(const std::vector<vec, std::allocator<vec>> &, const vec &, vec &)
+    -> INLINE: (32,29) std::vector<vec, std::allocator<vec>>::size(const std::vector<vec, std::allocator<vec>> *) const
+    -> INLINE: (36,15) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+    -> INLINE: (36,21) dot_product(const vec &, const vec &)
+      -> INLINE: (83,12) std::__parallel::inner_product<std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double>(std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (83,42) std::vector<double, std::allocator<double>>::begin(const std::vector<double, std::allocator<double>> *) const
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (83,53) std::vector<double, std::allocator<double>>::end(const std::vector<double, std::allocator<double>> *) const
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (83,62) std::vector<double, std::allocator<double>>::begin(const std::vector<double, std::allocator<double>> *) const
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (36,38) std::vector<vec, std::allocator<vec>>::operator[](const std::vector<vec, std::allocator<vec>> *, std::vector<vec, std::allocator<vec>>::size_type) const
+  -> (196,29) dot_product_mpi(const vec &, const vec &)
+  -> INLINE: (200,9) vec_lin_combo(double, const vec &, double, const vec &, vec &)
+    -> INLINE: (49,18) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+    -> INLINE: (51,15) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+    -> INLINE: (51,26) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+    -> INLINE: (51,37) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> (201,15) std::vector<double, std::allocator<double>>::operator=(std::vector<double, std::allocator<double>> *, const std::vector<double, std::allocator<double>> &)
+  -> INLINE: (202,9) vec_lin_combo(double, const vec &, double, const vec &, vec &)
+    -> INLINE: (49,18) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+    -> INLINE: (51,15) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+    -> INLINE: (51,26) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+    -> INLINE: (51,37) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> (203,15) std::vector<double, std::allocator<double>>::operator=(std::vector<double, std::allocator<double>> *, const std::vector<double, std::allocator<double>> &)
+  -> (204,21) dot_product_mpi(const vec &, const vec &)
+  -> INLINE: (207,13) vector_norm(const vec &)
+    -> INLINE: (121,17) dot_product(const vec &, const vec &)
+      -> INLINE: (83,12) std::__parallel::inner_product<std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double>(std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, std::vector<double, std::allocator<double>>::const_iterator, double)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (83,42) std::vector<double, std::allocator<double>>::begin(const std::vector<double, std::allocator<double>> *) const
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (83,53) std::vector<double, std::allocator<double>>::end(const std::vector<double, std::allocator<double>> *) const
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (83,62) std::vector<double, std::allocator<double>>::begin(const std::vector<double, std::allocator<double>> *) const
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (209,22) std::operator<<<std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>> &, const char *)
+  -> (209,53) std::basic_ostream<char, std::char_traits<char>>::operator<<(std::basic_ostream<char, std::char_traits<char>> *, std::basic_ostream<char, std::char_traits<char>>::__ostream_type &(*)(std::basic_ostream<char, std::char_traits<char>>::__ostream_type &))
+  -> INLINE: (218,9) vec_lin_combo(double, const vec &, double, const vec &, vec &)
+    -> INLINE: (49,18) std::vector<double, std::allocator<double>>::size(const std::vector<double, std::allocator<double>> *) const
+    -> INLINE: (51,15) std::vector<double, std::allocator<double>>::operator[](std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type)
+    -> INLINE: (51,26) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+    -> INLINE: (51,37) std::vector<double, std::allocator<double>>::operator[](const std::vector<double, std::allocator<double>> *, std::vector<double, std::allocator<double>>::size_type) const
+  -> (219,15) std::vector<double, std::allocator<double>>::operator=(std::vector<double, std::allocator<double>> *, const std::vector<double, std::allocator<double>> &)
+  -> INLINE: (222,31) std::vector<double, std::allocator<double>>::front(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (222,71) std::vector<double, std::allocator<double>>::front(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (226,24) std::vector<double, std::allocator<double>>::front(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (226,64) std::vector<double, std::allocator<double>>::front(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (227,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (227,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (227,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (227,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (227,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (227,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (227,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (227,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (227,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (227,5) std::vector<double, std::allocator<double>>::~vector(std::vector<double, std::allocator<double>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at conj_grad_solve.cpp(110,5) inlined into conj_grad_solve.cpp(187,17)
+remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+OpenMP Construct at conj_grad_solve.cpp(34,5) inlined into conj_grad_solve.cpp(195,9)
+remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at conj_grad_solve.cpp(158,5)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(158,5)
+<Remainder loop for vectorization>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(164,15)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(164,15)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(164,15)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(165,15)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(165,15)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(165,15)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(168,5)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(168,5)
+<Remainder loop for vectorization, Multiversioned v1>
+   remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(168,5)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25439: unrolled with remainder by 2  
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(168,5)
+<Remainder, Multiversioned v2>
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(179,11)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(179,11)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(179,11)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(183,17)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(183,17)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(183,17)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(183,43)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(183,43)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(183,43)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(183,69)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(183,69)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(183,69)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(184,33)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(184,33)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(184,33)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(184,79)
+   remark #25408: memset generated
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(184,79)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7) inlined into conj_grad_solve.cpp(184,79)
+   <Remainder loop for vectorization>
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 1
+   LOOP END
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(190,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(200,9)
+   <Peeled loop for vectorization, Multiversioned v1>
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(200,9)
+   <Multiversioned v1>
+      remark #25228: Loop multiversioned for Data Dependence
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(200,9)
+   <Alternate Alignment Vectorized Loop, Multiversioned v1>
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(200,9)
+   <Remainder loop for vectorization, Multiversioned v1>
+      remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(200,9)
+   <Multiversioned v2>
+      remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+      remark #25439: unrolled with remainder by 2  
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(200,9)
+   <Remainder, Multiversioned v2>
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(202,9)
+   <Peeled loop for vectorization, Multiversioned v1>
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(202,9)
+   <Multiversioned v1>
+      remark #25228: Loop multiversioned for Data Dependence
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(202,9)
+   <Alternate Alignment Vectorized Loop, Multiversioned v1>
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(202,9)
+   <Remainder loop for vectorization, Multiversioned v1>
+      remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(202,9)
+   <Multiversioned v2>
+      remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+      remark #25439: unrolled with remainder by 2  
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(202,9)
+   <Remainder, Multiversioned v2>
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(207,13)
+   <Peeled loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(207,13)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(207,13)
+   <Remainder loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(218,9)
+   <Peeled loop for vectorization, Multiversioned v1>
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(218,9)
+   <Multiversioned v1>
+      remark #25228: Loop multiversioned for Data Dependence
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(218,9)
+   <Alternate Alignment Vectorized Loop, Multiversioned v1>
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(218,9)
+   <Remainder loop for vectorization, Multiversioned v1>
+      remark #15335: remainder loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(218,9)
+   <Multiversioned v2>
+      remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+      remark #25439: unrolled with remainder by 2  
+   LOOP END
+
+   LOOP BEGIN at conj_grad_solve.cpp(50,5) inlined into conj_grad_solve.cpp(218,9)
+   <Remainder, Multiversioned v2>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(110,5) inlined into conj_grad_solve.cpp(187,17)
+<Peeled loop for vectorization>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(110,5) inlined into conj_grad_solve.cpp(187,17)
+   remark #25084: Preprocess Loopnests: Moving Out Store    [ conj_grad_solve.cpp(112,9) ]
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(110,5) inlined into conj_grad_solve.cpp(187,17)
+<Alternate Alignment Vectorized Loop>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(110,5) inlined into conj_grad_solve.cpp(187,17)
+<Remainder loop for vectorization>
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(35,5) inlined into conj_grad_solve.cpp(195,9)
+   remark #15518: Structure assignment was serialized   [ /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31) ]
+   remark #15301: OpenMP SIMD LOOP WAS VECTORIZED
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(195,9)
+      remark #25460: No loop optimizations reported
+   LOOP END
+LOOP END
+
+LOOP BEGIN at conj_grad_solve.cpp(35,5) inlined into conj_grad_solve.cpp(195,9)
+<Remainder loop for vectorization>
+
+   LOOP BEGIN at /ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_numeric.h(182,23) inlined into conj_grad_solve.cpp(195,9)
+      remark #25478: While Loop Unrolled by 2  
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 0), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 0), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 0), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 0), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 1), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 1), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 0), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/parallel/numeric(210,31):remark #34000: call to memcpy implemented inline with loads and stores with proven source (alignment, offset): (16, 0), and destination (alignment, offset): (1, 0)
+/ssoft/spack/paien/v2/opt/spack/linux-rhel7-x86_E5v2_IntelIB/gcc-4.8.5/gcc-6.4.0-5lz2sine3ujgoc7aswaexuinafuepktx/include/c++/6.4.0/bits/stl_algobase.h(752,7):remark #34026: call to memset implemented as a call to optimized library version
+conj_grad_solve.cpp(125,125):remark #34051: REGISTER ALLOCATION : [_Z16conj_grad_solverRKSt6vectorIS_IdSaIdEESaIS1_EERKS1_dS7_Ri] conj_grad_solve.cpp:125
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :    6[ rbx rbp r12-r15]
+        Assigned     :   30[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm15]
+        
+    Routine temporaries
+        Total         :    1332
+            Global    :     375
+            Local     :     957
+        Regenerable   :     283
+        Spilled       :      45
+        
+    Routine stack
+        Variables     :     572 bytes*
+            Reads     :      81 [3.50e+02 ~ 3.7%]
+            Writes    :     113 [2.55e+02 ~ 2.7%]
+        Spills        :     504 bytes*
+            Reads     :     121 [5.39e+02 ~ 5.7%]
+            Writes    :      79 [3.10e+02 ~ 3.3%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
