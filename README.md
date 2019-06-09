@@ -1,4 +1,7 @@
-# Instruction to run the Paralelized implementation of the Conjugate Gradient Descent on EPFL server :
+# Hybrid-MPI-OpenMP-Conjugate-Gradient-Algorithm
+___
+
+## Instruction to run the Paralelized implementation of the Conjugate Gradient Descent on EPFL server :
 
 * Connect on deneb1 server:
     
